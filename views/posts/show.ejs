@@ -1,0 +1,159 @@
+<article class="post-detail">
+    <header class="post-header">
+        <h1><%= post.title %></h1>
+        <div class="post-meta">
+            <div class="author-info">
+                <img src="<%= post.author.profilePicture || '/public/images/default-avatar.png' %>" alt="<%= post.author.username %>" class="author-avatar">
+                <div>
+                    <span class="author-name"><%= post.author.username %></span>
+                    <span class="post-date"><%= new Date(post.createdAt).toLocaleDateString() %></span>
+                </div>
+            </div>
+            <div class="post-stats">
+                <span class="read-time"><%= Math.ceil(post.content.length / 200) %> min read</span>
+            </div>
+        </div>
+    </header>
+
+    <% if (post.coverImage) { %>
+        <div class="post-cover">
+            <img src="<%= post.coverImage %>" alt="<%= post.title %>">
+        </div>
+    <% } %>
+
+    <div class="post-content">
+        <%= post.content %>
+    </div>
+
+    <div class="post-actions">
+        <button class="btn btn-outline like-post" data-post-id="<%= post._id %>">
+            <span class="like-count"><%= post.likes %></span> Likes
+        </button>
+        <button class="btn btn-outline clap-post" data-post-id="<%= post._id %>">
+            <span class="clap-count"><%= post.claps %></span> Claps
+        </button>
+        <% if (typeof user !== 'undefined') { %>
+            <button class="btn btn-outline save-post" data-post-id="<%= post._id %>">Save</button>
+        <% } %>
+    </div>
+
+    <div class="comments-section">
+        <h2>Comments</h2>
+        <% if (typeof user !== 'undefined') { %>
+            <form action="/comments/<%= post._id %>" method="POST" class="comment-form">
+                <textarea name="content" placeholder="Write a comment..." required></textarea>
+                <button type="submit" class="btn btn-primary">Post Comment</button>
+            </form>
+        <% } %>
+
+        <div class="comments-list">
+            <% post.comments.forEach(function(comment) { %>
+                <div class="comment">
+                    <div class="comment-header">
+                        <img src="<%= comment.author.profilePicture || '/public/images/default-avatar.png' %>" alt="<%= comment.author.username %>" class="comment-avatar">
+                        <div class="comment-meta">
+                            <span class="comment-author"><%= comment.author.username %></span>
+                            <span class="comment-date"><%= new Date(comment.createdAt).toLocaleDateString() %></span>
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <%= comment.content %>
+                    </div>
+                    <div class="comment-actions">
+                        <button class="btn btn-outline like-comment" data-comment-id="<%= comment._id %>">
+                            <span class="like-count"><%= comment.likes %></span> Likes
+                        </button>
+                        <% if (typeof user !== 'undefined' && user._id.toString() === comment.author._id.toString()) { %>
+                            <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST" class="delete-comment-form">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        <% } %>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</article>
+
+<script>
+    // Like post
+    document.querySelector('.like-post').addEventListener('click', async function() {
+        const postId = this.dataset.postId;
+        try {
+            const response = await fetch(`/posts/${postId}/like`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (response.ok) {
+                const data = await response.json();
+                this.querySelector('.like-count').textContent = data.likes;
+            }
+        } catch (error) {
+            console.error('Error liking post:', error);
+        }
+    });
+
+    // Clap post
+    document.querySelector('.clap-post').addEventListener('click', async function() {
+        const postId = this.dataset.postId;
+        try {
+            const response = await fetch(`/posts/${postId}/clap`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (response.ok) {
+                const data = await response.json();
+                this.querySelector('.clap-count').textContent = data.claps;
+            }
+        } catch (error) {
+            console.error('Error clapping post:', error);
+        }
+    });
+
+    // Save post
+    const saveButton = document.querySelector('.save-post');
+    if (saveButton) {
+        saveButton.addEventListener('click', async function() {
+            const postId = this.dataset.postId;
+            try {
+                const response = await fetch(`/dashboard/reading-list/${postId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    this.textContent = 'Saved';
+                    this.classList.add('saved');
+                }
+            } catch (error) {
+                console.error('Error saving post:', error);
+            }
+        });
+    }
+
+    // Like comments
+    document.querySelectorAll('.like-comment').forEach(button => {
+        button.addEventListener('click', async function() {
+            const commentId = this.dataset.commentId;
+            try {
+                const response = await fetch(`/comments/${commentId}/like`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    this.querySelector('.like-count').textContent = data.likes;
+                }
+            } catch (error) {
+                console.error('Error liking comment:', error);
+            }
+        });
+    });
+</script> 

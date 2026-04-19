@@ -1,0 +1,6 @@
+Testing API Key...
+Key length: 39
+Key first 4 chars: AIza
+Sending test prompt...
+FAILURE: API Call failed.
+Error message: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.

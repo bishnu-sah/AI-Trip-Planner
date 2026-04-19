@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --font-main: 'Outfit', 'Inter', system-ui, sans-serif;
+
+  /* Vibrant & Colorful Light Theme */
+  --bg-deep: #f0f4f8;
+  --bg-surface: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.85);
+
+  /* Colorful Surface Variations */
+  --bg-emerald-soft: rgba(16, 185, 129, 0.08);
+  --bg-ocean-soft: rgba(14, 165, 233, 0.08);
+  --bg-rose-soft: rgba(244, 63, 94, 0.08);
+  --bg-amber-soft: rgba(245, 158, 11, 0.08);
+
+  --accent-emerald: #059669;
+  --accent-teal: #0d9488;
+  --accent-cyan: #0891b2;
+  --accent-sky: #0ea5e9;
+  --accent-blue: #059669;
+  /* Pivoted Blue to Emerald */
+  --accent-cobalt: #047857;
+  --accent-rose: #e11d48;
+  --accent-purple: #10b981;
+  /* Pivoted Purple to Emerald/Green */
+
+  --gradient-vibrant: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+  --gradient-ocean: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+  --gradient-emerald: linear-gradient(135deg, #047857 0%, #059669 100%);
+  --gradient-soft: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+  --gradient-colorful: linear-gradient(135deg, #047857 0%, #059669 50%, #10b981 100%);
+  --gradient-glow: radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+
+  --text-main: #0f172a;
+  --text-muted: #1e293b;
+  --text-on-dark: #ffffff;
+
+  transition: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header strong {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent-blue);
+}
+
+nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 1rem;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--text-main);
+  transform: translateY(-2px);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--glass-shadow);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+}
+
+.card:hover {
+  background: white;
+  border-color: var(--accent-emerald);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+}
+
+h2,
+h3 {
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-top: 0;
+}
+
+button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-main);
+  cursor: pointer;
+}
+
+button:not(:disabled):hover {
+  transform: translateY(-3px);
+  filter: brightness(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f1f5f9;
+}
+
+::selection {
+  background: var(--accent-teal);
+  color: white;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

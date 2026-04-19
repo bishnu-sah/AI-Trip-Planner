@@ -1,0 +1,52 @@
+<div class="posts-container">
+    <h1>Latest Stories</h1>
+
+    <div class="posts-grid">
+        <% posts.forEach(function(post) { %>
+            <div class="post-card">
+                <div class="post-author">
+                    <img src="<%= post.author.profilePicture || '/public/images/default-avatar.png' %>" alt="<%= post.author.username %>" class="author-avatar">
+                    <div class="author-info">
+                        <span class="author-name"><%= post.author.username %></span>
+                        <span class="post-date"><%= new Date(post.createdAt).toLocaleDateString() %></span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <h2><a href="/posts/<%= post._id %>"><%= post.title %></a></h2>
+                    <p class="post-excerpt"><%= post.content.substring(0, 200) %>...</p>
+                </div>
+                <div class="post-footer">
+                    <div class="post-stats">
+                        <span class="read-time"><%= Math.ceil(post.content.length / 200) %> min read</span>
+                        <span class="claps"><%= post.claps %> claps</span>
+                    </div>
+                    <% if (typeof user !== 'undefined') { %>
+                        <button class="btn btn-outline save-post" data-post-id="<%= post._id %>">Save</button>
+                    <% } %>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.save-post').forEach(button => {
+        button.addEventListener('click', async function() {
+            const postId = this.dataset.postId;
+            try {
+                const response = await fetch(`/dashboard/reading-list/${postId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    this.textContent = 'Saved';
+                    this.classList.add('saved');
+                }
+            } catch (error) {
+                console.error('Error saving post:', error);
+            }
+        });
+    });
+</script> 

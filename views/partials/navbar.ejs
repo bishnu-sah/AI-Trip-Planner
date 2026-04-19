@@ -1,0 +1,18 @@
+<header>
+    <nav class="navbar container">
+        <div class="logo">
+            <a href="/">Medium</a>
+        </div>
+        <div class="nav-links">
+            <% if (user) { %>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/posts/new">Write</a>
+                <a href="/profile/<%= user._id %>">Profile</a>
+                <a href="/auth/logout">Logout</a>
+            <% } else { %>
+                <a href="/auth/login">Sign In</a>
+                <a href="/auth/register" class="btn btn-primary">Get Started</a>
+            <% } %>
+        </div>
+    </nav>
+</header> 

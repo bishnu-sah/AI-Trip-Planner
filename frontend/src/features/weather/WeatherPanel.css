@@ -1,0 +1,36 @@
+.weather-card {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.weather-card h3 {
+  color: #f59e0b;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.weather-temp {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fbbf24;
+  line-height: 1;
+}
+
+.weather-forecast {
+  color: #e5e7eb;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.weather-location {
+  color: #94a3b8;
+  font-size: 14px;
+  margin-top: 4px;
+}
+

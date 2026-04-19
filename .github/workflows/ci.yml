@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install backend deps
+        run: cd backend && npm install
+      - name: Install frontend deps
+        run: cd frontend && npm install
+      - name: Lint backend
+        run: cd backend && npm run lint -- --max-warnings=0
+      - name: Lint frontend
+        run: cd frontend && npm run lint -- --max-warnings=0
+      - name: Test backend
+        run: cd backend && npm test
+

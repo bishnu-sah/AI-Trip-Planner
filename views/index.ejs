@@ -1,0 +1,73 @@
+<div class="hero">
+    <div class="hero-content">
+        <span class="badge badge-soft">Fresh • Secure • Real content</span>
+        <h1>Tell vibrant stories with a colorful, focused newsroom.</h1>
+        <p>Read, write, and connect on a distraction-free canvas. Auth is live, so you can save drafts, clap, and return to your work securely.</p>
+        <div class="hero-buttons">
+            <a href="/auth/register" class="btn btn-primary">Create an account</a>
+            <a href="/auth/login" class="btn btn-outline">I already have an account</a>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <strong>Secure auth</strong>
+                <span>JWT cookies with validation</span>
+            </div>
+            <div class="hero-stat">
+                <strong>Rich posts</strong>
+                <span>Cover images, claps, reading time</span>
+            </div>
+            <div class="hero-stat">
+                <strong>Instant start</strong>
+                <span>Mocks optional; Mongo ready</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="featured-posts">
+    <div class="section-heading">
+        <h2>Featured Stories</h2>
+        <span class="chip">Curated for you</span>
+    </div>
+    <div class="posts-grid">
+        <% posts.forEach(function(post) { %>
+            <div class="post-card">
+                <div class="post-header">
+                    <img src="<%= post.author.profilePicture %>" alt="<%= post.author.username %>" class="author-avatar">
+                    <div class="post-meta">
+                        <a href="/profile/<%= post.author._id %>" class="author-name"><%= post.author.username %></a>
+                        <span class="post-date"><%= new Date(post.createdAt).toLocaleDateString() %></span>
+                    </div>
+                </div>
+                <h3 class="post-title">
+                    <a href="/posts/<%= post._id %>"><%= post.title %></a>
+                </h3>
+                <div class="post-content">
+                    <p><%= post.content.substring(0, 200) %>...</p>
+                </div>
+                <div class="post-footer">
+                    <div class="post-stats">
+                        <span class="read-time"><%= post.readTime %> min read</span>
+                        <span class="claps">👏 <%= post.claps %></span>
+                    </div>
+                    <a class="btn btn-outline" href="/posts/<%= post._id %>">Read</a>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<div class="features">
+    <div class="feature">
+        <h3>Write boldly</h3>
+        <p>Create and publish with cover images, reading time, and claps.</p>
+    </div>
+    <div class="feature">
+        <h3>Login that sticks</h3>
+        <p>Cookie-based JWT keeps you signed in without exposing tokens to JS.</p>
+    </div>
+    <div class="feature">
+        <h3>Reader-first</h3>
+        <p>Clean typography, gradients, and glass cards keep focus on your words.</p>
+    </div>
+</div>
