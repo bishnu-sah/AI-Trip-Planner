@@ -450,22 +450,7 @@ npm install
 
 ---
 
-## Configure Environment Variables
 
-Create a `.env` file inside the backend folder.
-
-```env
-PORT=5000
-
-MONGO_URI=your_mongodb_connection
-
-JWT_SECRET=your_secret_key
-
-GEMINI_API_KEY=your_gemini_api_key
-
-GOOGLE_PLACES_API_KEY=your_google_places_api_key
-
-GOOGLE_DISTANCE_MATRIX_API_KEY=your_distance_matrix_api_key
 ```
 
 ---
@@ -625,108 +610,7 @@ The UI automatically adapts to different screen sizes to ensure a seamless exper
 | Browser | Chrome / Edge / Firefox |
 ---
 
-# 📸 Screenshots
-
-> Replace the placeholders below with screenshots of your application.
-
-## 🏠 Home Page
-
-<p align="center">
-<img src="screenshots/home.png" width="900"/>
-</p>
-
----
-
-## 🔐 Login
-
-<p align="center">
-<img src="screenshots/login.png" width="900"/>
-</p>
-
----
-
-## ✈️ Create Trip
-
-<p align="center">
-<img src="screenshots/create-trip.png" width="900"/>
-</p>
-
----
-
-## 🤖 AI Generated Itinerary
-
-<p align="center">
-<img src="screenshots/itinerary.png" width="900"/>
-</p>
-
----
-
-## 💬 AI Chat Assistant
-
-<p align="center">
-<img src="screenshots/chat.png" width="900"/>
-</p>
-
----
-
-## 📄 Export PDF
-
-<p align="center">
-<img src="screenshots/export.png" width="900"/>
-</p>
-
----
-
-# 🎯 Key Functionalities
-
-### 👤 User Authentication
-
-- User Registration
-- Secure Login
-- JWT Authentication
-- Password Encryption
-- Protected Routes
-
----
-
-### ✈️ Trip Management
-
-- Create Trip
-- Edit Trip
-- Delete Trip
-- View Saved Trips
-- Store Previous Itineraries
-
----
-
-### 🤖 AI Travel Assistant
-
-- Personalized Recommendations
-- AI-generated Travel Plans
-- Natural Language Understanding
-- Budget-aware Suggestions
-- Day-wise Itinerary Generation
-
----
-
-### 📍 Smart Location Services
-
-- Google Places Integration
-- Nearby Attractions
-- Route Planning
-- Distance Calculation
-- Travel Time Estimation
-
----
-
-### 📄 Export Features
-
-- Download PDF
-- Printable Itinerary
-- Structured Travel Plan
-
----
-
+# 
 # 🔄 Complete Data Flow
 
 ```text
@@ -913,15 +797,6 @@ This project can be extended with:
 
 https://github.com/bishnu-sah
 
-**LinkedIn**
-
-https://linkedin.com/in/YOUR-LINKEDIN
-
-**Portfolio**
-
-https://YOUR-PORTFOLIO.com
-
----
 
 # 🙏 Acknowledgements
 
@@ -937,17 +812,6 @@ Special thanks to:
 - Tailwind CSS
 - Vite
 
-for providing the technologies that made this project possible.
-
----
-
-# 📄 License
-
-This project is licensed under the **MIT License**.
-
-Feel free to use, modify, and distribute this project for educational and personal purposes.
-
----
 
 # ⭐ Support
 
