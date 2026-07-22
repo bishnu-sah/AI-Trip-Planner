@@ -797,22 +797,6 @@ This project can be extended with:
 
 https://github.com/bishnu-sah
 
-
-# 🙏 Acknowledgements
-
-Special thanks to:
-
-- Google Gemini AI
-- Google Places API
-- Google Distance Matrix API
-- MongoDB
-- React
-- Express.js
-- TypeScript
-- Tailwind CSS
-- Vite
-
-
 # ⭐ Support
 
 If you found this project useful, please consider giving it a **Star ⭐** on GitHub.
