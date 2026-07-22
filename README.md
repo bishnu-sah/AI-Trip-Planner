@@ -10,7 +10,7 @@ Plan smarter journeys with AI-powered recommendations tailored to your destinati
 
 <br>
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-2563EB?style=for-the-badge)](YOUR_LIVE_LINK_HERE)
+
 
 [![Frontend](https://img.shields.io/badge/Frontend-React-61DAFB?style=for-the-badge&logo=react)]
 [![Backend](https://img.shields.io/badge/Backend-Node.js-339933?style=for-the-badge&logo=node.js)]
